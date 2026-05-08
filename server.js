@@ -46,7 +46,7 @@ const upload = multer({ storage: storage });
 // --- MongoDB Setup ---
 const MONGODB_URI =
   process.env.MONGODB_URI ||
-  'mongodb+srv://akhilthadaka97_db_user:X2D48Jafx01htz63@cluster0.ug6qs6d.mongodb.net/?appName=Cluster0';
+  'mongodb://localhost:27017/mydb';
 mongoose.connect(MONGODB_URI)
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
