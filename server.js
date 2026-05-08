@@ -44,9 +44,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // --- MongoDB Setup ---
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  'mongodb://localhost:27017/mydb';
+const MONGODB_URI = process.env.MONGODB_URI;
+if (!MONGODB_URI) {
+  throw new Error('Missing required env var: MONGODB_URI');
+}
 mongoose.connect(MONGODB_URI)
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
